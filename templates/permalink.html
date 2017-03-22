@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <a href="/blog/deletepost/{{post.key().id()}}">Delete</a>
+  <a href="/blog/editpost/{{post.key().id()}}">Edit</a>
+  {{post.render() | safe}}
+
+  <form method="post">
+    <input type="hidden" id="like" name="like" value="update">
+      <button type="submit">Like {{likes_total}}</button>
+  </form>
+
+  <form method="post" class="comment-form">
+    <label>
+      <div>Comment</div>
+      <input type="text" id="comment" name="comment" value="">
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+
+  {% for c in comments %}
+  <blockquote>
+    <a href="/blog/deletecomment/{{post.key().id()}}/{{c.key().id()}}">Delete</a>
+    <a href="/blog/editcomment/{{post.key().id()}}/{{c.key().id()}}">Edit</a>
+    <p>{{ c.comment }}</p>
+    <p>{{ c.getUserName() }}</p>
+  </blockquote>
+  {% endfor %}
+
+  <h3><a href="/blog">Blog homepage</a></h3>
+
+{% endblock %}
