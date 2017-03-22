@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Edit Comment</h2>
+
+    <form method="post">
+      <input type="hidden" id="post_id" name="post_id" value="{{post_id}}">
+      <label>
+        <div>comment</div>
+        <input type="text" id="comment" name="comment" value="{{comment}}">
+      </label>
+
+      <div class="error">{{error}}</div>
+
+      <input type="submit">
+      <button type="submit">Cancel</button>
+    </form>
+
+{% endblock %}
